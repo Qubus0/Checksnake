@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onkeydown="keyboardControl(KeyboardEvent)" onload="createSnakeGame(); closeOptions(); displaySavedHighscore()">
+<body onkeydown="keyboardControl(event)" onload="createSnakeGame(); closeOptions(); displaySavedHighscore()">
 <br>
 <h1 class="center">Check a Box and Snake Away</h1>
 <div class="center">
@@ -38,28 +38,28 @@
         <tr>
             <td><span>Up:</span></td>
             <td>
-                <p tabindex="-1" class="keybind" id="upKey" onkeydown="updateKeybindings(KeyboardEvent, 'upKey')">w</p>
+                <p tabindex="-1" class="keybind" id="upKey" onkeydown="updateKeybindings(event, 'upKey')">w</p>
             </td>
         </tr>
 
         <tr>
             <td><span>Down:</span></td>
             <td>
-                <p tabindex="-1" class="keybind" id="downKey" onkeydown="updateKeybindings(KeyboardEvent, 'downKey')">s</p>
+                <p tabindex="-1" class="keybind" id="downKey" onkeydown="updateKeybindings(event, 'downKey')">s</p>
             </td>
         </tr>
 
         <tr>
             <td><span>Left:</span></td>
             <td>
-                <p tabindex="-1" class="keybind" id="leftKey" onkeydown="updateKeybindings(KeyboardEvent, 'leftKey')">a</p>
+                <p tabindex="-1" class="keybind" id="leftKey" onkeydown="updateKeybindings(event, 'leftKey')">a</p>
             </td>
         </tr>
 
         <tr>
             <td><span>Right:</span></td>
             <td>
-                <p tabindex="-1" class="keybind" id="rightKey" onkeydown="updateKeybindings(KeyboardEvent, 'rightKey')">d</p>
+                <p tabindex="-1" class="keybind" id="rightKey" onkeydown="updateKeybindings(event, 'rightKey')">d</p>
             </td>
         </tr>
     </table>
