@@ -8,57 +8,67 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onkeydown="keyboardControl(event)" onload="createSnakeGame(); /* closeOptions(); */ checkHighscore();">
-    <br>
-    <h1 class="center">Check a Box and Snake Away</h1>
+<body onkeydown="keyboardControl(KeyboardEvent)" onload="createSnakeGame(); closeOptions(); displaySavedHighscore()">
+<br>
+<h1 class="center">Check a Box and Snake Away</h1>
+<div class="center">
+    <input type="checkbox" id="styling" onchange="restyle()">
+    <label for="styling"> Don't Style Checkboxes</label>
+    <span class="options-button" id=options-open onclick="openOptions()">&#9776;</span>
+</div>
+<div id="swipable">
     <div class="center">
-        <input type="checkbox" id="styling" onchange="restyle()">
-        <label for="styling"> Don't Style Checkboxes</label>
-    </div>
-    <div class="center">
-        <div id="snek"></div>
-        <div id="score">
+        <div id="snek"><!-- here be snake game --></div>
+        <div class="stats">
             <h3 id="point-counter">Points: 0</h3>
             <h3 id="high">Highscore: 0</h3>
         </div>
+        <div class="stats">
+            <h4>Time:</h4>
+            <h5 id="timedisplay" class="number">00:00.0</h5>
+        </div>
     </div>
+</div>
 
-    <span class="options-button" id=options-open onclick="openOptions()">Options &#9776;</span>
-    <div id="options">
-        <a class="options-button" id="options-close" href="javascript:void(0)" onclick="closeOptions()">&times;</a>
-        <h3 class="option-title">Change Keybindings</h3>
-        <table class="keytable">
-            <tr>
-                <td><span>Up:</span></td>
-                <td>
-                    <p tabindex="-1" class="keybind" id="upKey" onkeydown="updateKeys(event, 'upKey')">w</p>
-                </td>
-            </tr>
 
-            <tr>
-                <td><span>Down:</span></td>
-                <td>
-                    <p tabindex="-1" class="keybind" id="downKey" onkeydown="updateKeys(event, 'downKey')">s</p>
-                </td>
-            </tr>
+<div id="options">
+    <a class="options-button" id="options-close" href="javascript:void(0)" onclick="closeOptions()">&times;</a>
+    <h3 class="option-title">Change Keybindings</h3>
+    <table class="keytable">
+        <tr>
+            <td><span>Up:</span></td>
+            <td>
+                <p tabindex="-1" class="keybind" id="upKey" onkeydown="updateKeybindings(KeyboardEvent, 'upKey')">w</p>
+            </td>
+        </tr>
 
-            <tr>
-                <td><span>Left:</span></td>
-                <td>
-                    <p tabindex="-1" class="keybind" id="leftKey" onkeydown="updateKeys(event, 'leftKey')">a</p>
-                </td>
-            </tr>
+        <tr>
+            <td><span>Down:</span></td>
+            <td>
+                <p tabindex="-1" class="keybind" id="downKey" onkeydown="updateKeybindings(KeyboardEvent, 'downKey')">s</p>
+            </td>
+        </tr>
 
-            <tr>
-                <td><span>Right:</span></td>
-                <td>
-                    <p tabindex="-1" class="keybind" id="rightKey" onkeydown="updateKeys(event, 'rightKey')">d</p>
-                </td>
-            </tr>
-        </table>
-    </div>
+        <tr>
+            <td><span>Left:</span></td>
+            <td>
+                <p tabindex="-1" class="keybind" id="leftKey" onkeydown="updateKeybindings(KeyboardEvent, 'leftKey')">a</p>
+            </td>
+        </tr>
 
-    <script src="script.js"></script>
+        <tr>
+            <td><span>Right:</span></td>
+            <td>
+                <p tabindex="-1" class="keybind" id="rightKey" onkeydown="updateKeybindings(KeyboardEvent, 'rightKey')">d</p>
+            </td>
+        </tr>
+    </table>
+    <h3 class="option-title">Loop</h3>
+    <input type="checkbox" id="noloop">
+    <label for="noloop">Disable Loop</label>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 

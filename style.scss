@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Zilla+Slab:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Zilla+Slab:wght@500&family=B612+Mono&display=swap");
 //font-family: 'Zilla Slab', serif;
 //font-family: 'Open Sans', sans-serif;
 
@@ -10,9 +10,15 @@ $head-color: #386641;
 $point-color: #bc4749;
 $check-size: 20px;
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     background: $page-color;
+    margin: 0;
+    height: 100%;
 }
 
 h1,
@@ -21,6 +27,19 @@ h3,
 h4,
 h5 {
     font-family: "Zilla Slab", serif;
+}
+
+@media screen and (max-width: 450px) {
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+
+#swipable {
+    width: calc(100% - 20px);
+    height: 100%;
+    margin: 0 10px;
 }
 
 .center {
@@ -32,12 +51,17 @@ h5 {
     margin-top: 30px;
 }
 
-#score {
+.stats {
     display: flex;
     justify-content: space-between;
-    h3 {
+
+    h3, h4, h5 {
         margin: 5px 0;
     }
+}
+
+.number {
+    font-family: 'B612 Mono', monospace;
 }
 
 .row {
@@ -58,8 +82,7 @@ input[type="checkbox"].colored {
     appearance: none;
     -webkit-appearance: none;
     border: none;
-    border-radius: none;
-    //border: 1px solid $field-color;
+    border-radius: 0;
 }
 
 input[type="checkbox"]#styling {
@@ -67,58 +90,70 @@ input[type="checkbox"]#styling {
     width: 15px;
     height: 15px;
     vertical-align: bottom;
+
     & + label {
         text-align: center;
     }
 }
 
-input[type="checkbox"].snakebody:checked {
-    background: $snake-color;
+input[type="checkbox"].snakehead:checked {
+    background-color: $head-color;
 }
 
-input[type="checkbox"].snakehead:checked {
-    background: $head-color;
+input[type="checkbox"].snakebody:checked {
+    background-color: $snake-color;
 }
 
 input[type="checkbox"].point {
-    background: $point-color;
+    background-color: $point-color;
     border-radius: 50%;
-    transition: 0.4s ease all;
+    transition: 0.4s;
 }
 
 .options-button {
-    font-size: 25px;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 10px;
     margin: 0;
-    font-size: 20px;
     text-decoration: none;
     color: gray;
+    cursor: pointer;
 
     &#options-close {
         font-size: 30px;
+        position: absolute;
+        top: 0;
+        right: 10px;
     }
 
     &#options-open {
+        font-size: 20px;
         top: 20px;
         right: 20px;
     }
 }
 
+@media screen and (min-width: 650px) {
+    #options-open::before {
+        content: "Options "
+    }
+}
+
+@media screen and (min-width: 500px) {
+    #options-open {
+        position: absolute;
+    }
+}
+
 #options {
-    background: $field-color;
+    background-color: $field-color;
     position: fixed;
     z-index: 1;
     top: 10px;
     right: 10px;
-    overflow-x: hidden;
-    padding: 35px 0 8px 0;
+    padding: 35px 5px 8px 5px;
+    overflow: hidden;
     transition: 0.5s;
 
     .option-title {
-        margin: 10px;
+        margin: 10px 10px 0 10px;
     }
 
     table {
@@ -126,10 +161,8 @@ input[type="checkbox"].point {
         width: 100%;
     }
 
-    input[type="radio"] {
-        width: 50%;
-        margin: 0 10px;
-        border: none;
+    input[type="checkbox"] {
+        margin: 20px 5px 20px 20px;
     }
 }
 
@@ -139,13 +172,13 @@ input[type="checkbox"].point {
     padding: 10px;
     margin: 0;
     right: 0;
-    background: white;
+    background-color: white;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     appearance: none;
 
     &:hover {
-        background: whitesmoke;
+        background-color: whitesmoke;
     }
 }
