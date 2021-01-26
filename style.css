@@ -1,7 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Zilla+Slab:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Zilla+Slab:wght@500&family=B612+Mono&display=swap");
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f2e8cf;
+  background-color: #f2e8cf;
+  margin: 0;
+  height: 100%;
 }
 
 h1,
@@ -10,6 +16,18 @@ h3,
 h4,
 h5 {
   font-family: "Zilla Slab", serif;
+}
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 1.5em;
+  }
+}
+
+#swipable {
+  width: calc(100% - 20px);
+  height: 100%;
+  margin: 0 10px;
 }
 
 .center {
@@ -23,7 +41,7 @@ h5 {
   margin-top: 30px;
 }
 
-#score {
+.stats {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,8 +50,12 @@ h5 {
           justify-content: space-between;
 }
 
-#score h3 {
+.stats h3, .stats h4, .stats h5 {
   margin: 5px 0;
+}
+
+.number {
+  font-family: 'B612 Mono', monospace;
 }
 
 .row {
@@ -41,11 +63,11 @@ h5 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background: #a7c957;
+  background-color: #a7c957;
 }
 
 input[type="checkbox"].field {
-  background: transparent;
+  background-color: transparent;
   width: 20px;
   height: 20px;
   margin: 0;
@@ -53,9 +75,11 @@ input[type="checkbox"].field {
 }
 
 input[type="checkbox"].colored {
+  -moz-appearance: none;
+       appearance: none;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  border: none;
+  border-radius: 0;
 }
 
 input[type="checkbox"]#styling {
@@ -71,56 +95,67 @@ input[type="checkbox"]#styling + label {
   text-align: center;
 }
 
-input[type="checkbox"].snakebody:checked {
-  background: #6a994e;
+input[type="checkbox"].snakehead:checked {
+  background-color: #386641;
 }
 
-input[type="checkbox"].snakehead:checked {
-  background: #386641;
+input[type="checkbox"].snakebody:checked {
+  background-color: #6a994e;
 }
 
 input[type="checkbox"].point {
-  background: #bc4749;
+  background-color: #bc4749;
   border-radius: 50%;
-  -webkit-transition: 0.4s ease all;
-  transition: 0.4s ease all;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .options-button {
-  font-size: 25px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 10px;
   margin: 0;
-  font-size: 20px;
   text-decoration: none;
   color: gray;
+  cursor: pointer;
 }
 
 .options-button#options-close {
   font-size: 30px;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
 
 .options-button#options-open {
+  font-size: 20px;
   top: 20px;
   right: 20px;
 }
 
+@media screen and (min-width: 650px) {
+  #options-open::before {
+    content: "Options ";
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #options-open {
+    position: absolute;
+  }
+}
+
 #options {
-  background: #a7c957;
+  background-color: #a7c957;
   position: fixed;
   z-index: 1;
   top: 10px;
   right: 10px;
-  overflow-x: hidden;
-  padding: 35px 0 8px 0;
+  padding: 35px 5px 8px 5px;
+  overflow: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 #options .option-title {
-  margin: 10px;
+  margin: 10px 10px 0 10px;
 }
 
 #options table {
@@ -128,10 +163,8 @@ input[type="checkbox"].point {
   width: 100%;
 }
 
-#options input[type="radio"] {
-  width: 50%;
-  margin: 0 10px;
-  border: none;
+#options input[type="checkbox"] {
+  margin: 20px 5px 20px 20px;
 }
 
 .keybind {
@@ -142,7 +175,7 @@ input[type="checkbox"].point {
   padding: 10px;
   margin: 0;
   right: 0;
-  background: white;
+  background-color: white;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -152,6 +185,6 @@ input[type="checkbox"].point {
 }
 
 .keybind:hover {
-  background: whitesmoke;
+  background-color: whitesmoke;
 }
 /*# sourceMappingURL=style.css.map */
